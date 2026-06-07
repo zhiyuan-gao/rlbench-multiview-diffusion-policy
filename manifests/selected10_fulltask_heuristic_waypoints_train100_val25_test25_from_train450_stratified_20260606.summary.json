@@ -1,0 +1,384 @@
+{
+  "manifest_schema": {
+    "low_dim_path_template": "{lowdim_root_for_source_bundle}/{rgb_episode_relpath}/low_dim_obs.pkl",
+    "required_for_training": [
+      "split",
+      "source_bundle",
+      "rgb_episode_relpath",
+      "task",
+      "variation",
+      "episode",
+      "task_instruction",
+      "full_task_heuristic_waypoints",
+      "num_frames"
+    ],
+    "rgb_path_template": "{rgb_root_for_source_bundle}/{rgb_episode_relpath}/{view}_rgb/{frame}.png",
+    "root_note": "RGB roots and low-dim metadata roots may be separate directories with matching episode-relative layout."
+  },
+  "num_rows": 1500,
+  "output_jsonl": "manifests/selected10_fulltask_heuristic_waypoints_train100_val25_test25_from_train450_stratified_20260606.jsonl",
+  "samples_by_split": {
+    "test": 250,
+    "train": 1000,
+    "val": 250
+  },
+  "samples_by_split_task": {
+    "test": {
+      "meat_off_grill": 25,
+      "open_drawer": 25,
+      "push_buttons": 25,
+      "put_money_in_safe": 25,
+      "reach_and_drag": 25,
+      "slide_block_to_target": 25,
+      "stack_cups": 25,
+      "stack_wine": 25,
+      "sweep_to_dustpan": 25,
+      "turn_tap": 25
+    },
+    "train": {
+      "meat_off_grill": 100,
+      "open_drawer": 100,
+      "push_buttons": 100,
+      "put_money_in_safe": 100,
+      "reach_and_drag": 100,
+      "slide_block_to_target": 100,
+      "stack_cups": 100,
+      "stack_wine": 100,
+      "sweep_to_dustpan": 100,
+      "turn_tap": 100
+    },
+    "val": {
+      "meat_off_grill": 25,
+      "open_drawer": 25,
+      "push_buttons": 25,
+      "put_money_in_safe": 25,
+      "reach_and_drag": 25,
+      "slide_block_to_target": 25,
+      "stack_cups": 25,
+      "stack_wine": 25,
+      "sweep_to_dustpan": 25,
+      "turn_tap": 25
+    }
+  },
+  "samples_by_task": {
+    "meat_off_grill": 150,
+    "open_drawer": 150,
+    "push_buttons": 150,
+    "put_money_in_safe": 150,
+    "reach_and_drag": 150,
+    "slide_block_to_target": 150,
+    "stack_cups": 150,
+    "stack_wine": 150,
+    "sweep_to_dustpan": 150,
+    "turn_tap": 150
+  },
+  "selection": "train: deterministic stratified 100 per task from train450; val/test unchanged",
+  "train_selection_by_task": {
+    "meat_off_grill": {
+      "train100_source_bundle": {
+        "all200": 32,
+        "all400": 68
+      },
+      "train100_variations": {
+        "variation0": 51,
+        "variation1": 49
+      },
+      "train450_variations": {
+        "variation0": 230,
+        "variation1": 220
+      }
+    },
+    "open_drawer": {
+      "train100_source_bundle": {
+        "all200": 32,
+        "all400": 68
+      },
+      "train100_variations": {
+        "variation0": 26,
+        "variation1": 36,
+        "variation2": 38
+      },
+      "train450_variations": {
+        "variation0": 117,
+        "variation1": 162,
+        "variation2": 171
+      }
+    },
+    "push_buttons": {
+      "train100_source_bundle": {
+        "all200": 50,
+        "all400": 50
+      },
+      "train100_variations": {
+        "variation0": 2,
+        "variation1": 2,
+        "variation10": 2,
+        "variation11": 2,
+        "variation12": 2,
+        "variation13": 2,
+        "variation14": 2,
+        "variation15": 2,
+        "variation16": 2,
+        "variation17": 2,
+        "variation18": 2,
+        "variation19": 2,
+        "variation2": 2,
+        "variation20": 2,
+        "variation21": 1,
+        "variation22": 2,
+        "variation23": 2,
+        "variation24": 2,
+        "variation25": 2,
+        "variation26": 1,
+        "variation27": 2,
+        "variation28": 2,
+        "variation29": 1,
+        "variation3": 2,
+        "variation30": 2,
+        "variation31": 3,
+        "variation32": 2,
+        "variation33": 2,
+        "variation34": 2,
+        "variation35": 3,
+        "variation36": 2,
+        "variation37": 2,
+        "variation38": 3,
+        "variation39": 2,
+        "variation4": 2,
+        "variation40": 2,
+        "variation41": 3,
+        "variation42": 2,
+        "variation43": 2,
+        "variation44": 2,
+        "variation45": 2,
+        "variation46": 2,
+        "variation47": 1,
+        "variation48": 2,
+        "variation49": 2,
+        "variation5": 2,
+        "variation6": 2,
+        "variation7": 2,
+        "variation8": 2,
+        "variation9": 2
+      },
+      "train450_variations": {
+        "variation0": 12,
+        "variation1": 10,
+        "variation10": 9,
+        "variation11": 8,
+        "variation12": 10,
+        "variation13": 10,
+        "variation14": 9,
+        "variation15": 10,
+        "variation16": 9,
+        "variation17": 8,
+        "variation18": 9,
+        "variation19": 9,
+        "variation2": 11,
+        "variation20": 8,
+        "variation21": 6,
+        "variation22": 9,
+        "variation23": 8,
+        "variation24": 9,
+        "variation25": 8,
+        "variation26": 7,
+        "variation27": 9,
+        "variation28": 8,
+        "variation29": 7,
+        "variation3": 9,
+        "variation30": 9,
+        "variation31": 8,
+        "variation32": 9,
+        "variation33": 10,
+        "variation34": 9,
+        "variation35": 8,
+        "variation36": 9,
+        "variation37": 9,
+        "variation38": 8,
+        "variation39": 9,
+        "variation4": 11,
+        "variation40": 10,
+        "variation41": 8,
+        "variation42": 10,
+        "variation43": 9,
+        "variation44": 9,
+        "variation45": 9,
+        "variation46": 9,
+        "variation47": 7,
+        "variation48": 9,
+        "variation49": 9,
+        "variation5": 9,
+        "variation6": 11,
+        "variation7": 10,
+        "variation8": 10,
+        "variation9": 10
+      }
+    },
+    "put_money_in_safe": {
+      "train100_source_bundle": {
+        "all200": 32,
+        "all400": 68
+      },
+      "train100_variations": {
+        "variation0": 33,
+        "variation1": 34,
+        "variation2": 33
+      },
+      "train450_variations": {
+        "variation0": 150,
+        "variation1": 151,
+        "variation2": 149
+      }
+    },
+    "reach_and_drag": {
+      "train100_source_bundle": {
+        "all200": 34,
+        "all400": 66
+      },
+      "train100_variations": {
+        "variation0": 7,
+        "variation1": 5,
+        "variation10": 4,
+        "variation11": 4,
+        "variation12": 4,
+        "variation13": 4,
+        "variation14": 4,
+        "variation15": 4,
+        "variation16": 4,
+        "variation17": 4,
+        "variation18": 4,
+        "variation19": 4,
+        "variation2": 5,
+        "variation3": 7,
+        "variation4": 5,
+        "variation5": 8,
+        "variation6": 5,
+        "variation7": 5,
+        "variation8": 5,
+        "variation9": 8
+      },
+      "train450_variations": {
+        "variation0": 26,
+        "variation1": 25,
+        "variation10": 19,
+        "variation11": 19,
+        "variation12": 20,
+        "variation13": 20,
+        "variation14": 18,
+        "variation15": 21,
+        "variation16": 20,
+        "variation17": 21,
+        "variation18": 21,
+        "variation19": 19,
+        "variation2": 25,
+        "variation3": 26,
+        "variation4": 25,
+        "variation5": 26,
+        "variation6": 25,
+        "variation7": 25,
+        "variation8": 23,
+        "variation9": 26
+      }
+    },
+    "slide_block_to_target": {
+      "train100_source_bundle": {
+        "all200": 32,
+        "all400": 68
+      },
+      "train100_variations": {
+        "variation0": 100
+      },
+      "train450_variations": {
+        "variation0": 450
+      }
+    },
+    "stack_cups": {
+      "train100_source_bundle": {
+        "all200": 33,
+        "all400": 67
+      },
+      "train100_variations": {
+        "variation0": 6,
+        "variation1": 5,
+        "variation10": 3,
+        "variation11": 8,
+        "variation12": 4,
+        "variation13": 9,
+        "variation14": 4,
+        "variation15": 4,
+        "variation16": 4,
+        "variation17": 4,
+        "variation18": 4,
+        "variation19": 4,
+        "variation2": 6,
+        "variation3": 5,
+        "variation4": 5,
+        "variation5": 5,
+        "variation6": 5,
+        "variation7": 5,
+        "variation8": 5,
+        "variation9": 5
+      },
+      "train450_variations": {
+        "variation0": 27,
+        "variation1": 26,
+        "variation10": 17,
+        "variation11": 22,
+        "variation12": 21,
+        "variation13": 22,
+        "variation14": 21,
+        "variation15": 21,
+        "variation16": 18,
+        "variation17": 21,
+        "variation18": 20,
+        "variation19": 20,
+        "variation2": 27,
+        "variation3": 24,
+        "variation4": 25,
+        "variation5": 23,
+        "variation6": 24,
+        "variation7": 24,
+        "variation8": 24,
+        "variation9": 23
+      }
+    },
+    "stack_wine": {
+      "train100_source_bundle": {
+        "all200": 32,
+        "all400": 68
+      },
+      "train100_variations": {
+        "variation0": 100
+      },
+      "train450_variations": {
+        "variation0": 450
+      }
+    },
+    "sweep_to_dustpan": {
+      "train100_source_bundle": {
+        "all200": 32,
+        "all400": 68
+      },
+      "train100_variations": {
+        "variation0": 100
+      },
+      "train450_variations": {
+        "variation0": 450
+      }
+    },
+    "turn_tap": {
+      "train100_source_bundle": {
+        "all200": 32,
+        "all400": 68
+      },
+      "train100_variations": {
+        "variation0": 51,
+        "variation1": 49
+      },
+      "train450_variations": {
+        "variation0": 228,
+        "variation1": 222
+      }
+    }
+  }
+}

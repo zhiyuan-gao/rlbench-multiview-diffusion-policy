@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rlbench-multiview-dp"
+version = "0.1.0"
+description = "Robomimic-style multi-view Diffusion Policy baseline for RLBench heuristic waypoint imitation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+  "numpy",
+  "pillow",
+  "tqdm",
+  "torch",
+  "torchvision",
+  "transformers",
+]
+
+[project.scripts]
+rlbench-mvdp-train = "rlbench_multiview_dp.train:main"
+rlbench-mvdp-eval = "rlbench_multiview_dp.eval_online:main"
+rlbench-mvdp-smoke-data = "rlbench_multiview_dp.smoke_data:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

@@ -1,0 +1,10 @@
+numpy
+pillow
+tqdm
+torch
+torchvision
+transformers
+opencv-python
+imageio
+imageio-ffmpeg
+
