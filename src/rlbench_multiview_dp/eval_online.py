@@ -9,7 +9,7 @@ import numpy as np
 
 from .common import (
     VIEW_TO_ATTR,
-    absolute_rpy7_to_rlbench,
+    absolute_rotvec7_to_rlbench,
     clean_waypoints,
     filter_manifest_rows,
     load_demo,
@@ -156,7 +156,7 @@ def run_episode(task_env, policy, row, lowdim_episode_dir, args, out_dir, invali
     try:
         for step in range(max_steps):
             action = policy.sample_action(task_instruction)
-            rlbench_action = absolute_rpy7_to_rlbench(action)
+            rlbench_action = absolute_rotvec7_to_rlbench(action)
             log_item = {
                 "policy_step": int(step),
                 "action": action.tolist(),
@@ -292,7 +292,7 @@ def run_eval(args):
             "lowdim_roots": {k: str(v) for k, v in lowdim_roots.items()},
             "sample_steps": int(args.sample_steps),
             "arm_mode": args.arm_mode,
-            "action_format": "absolute_rpy7",
+            "action_format": "absolute_rotvec7",
             "execute_horizon": 1,
             "camera_image_size": int(camera_image_size),
         }

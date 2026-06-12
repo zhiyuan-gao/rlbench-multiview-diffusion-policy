@@ -309,7 +309,7 @@ def train(args):
             "proprio_dim": 7,
             "share_visual_encoder": bool(args.share_visual_encoder),
             "policy": "robomimic_style_multiview_resnet_clip_waypoint_dp",
-            "target": "next_full_task_heuristic_waypoint_absolute_rpy7",
+            "target": "next_full_task_heuristic_waypoint_absolute_rotvec7",
         }
     )
     if is_main:

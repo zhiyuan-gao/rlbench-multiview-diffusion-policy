@@ -195,6 +195,17 @@ def quat_to_rotvec(q):
     return xyz * scale[..., None]
 
 
+def rotvec_to_quat(rotvec):
+    rotvec = np.asarray(rotvec, dtype=np.float64)
+    angle = np.linalg.norm(rotvec)
+    if angle < 1e-12:
+        return np.asarray([0.0, 0.0, 0.0, 1.0], dtype=np.float64)
+    axis = rotvec / angle
+    half = 0.5 * angle
+    xyz = axis * math.sin(half)
+    return normalize_quat(np.concatenate([xyz, [math.cos(half)]]))
+
+
 def gripper_open_value(obs, threshold: float = 0.95) -> float:
     joint_positions = getattr(obs, "gripper_joint_positions", None)
     if joint_positions is None:
@@ -217,15 +228,15 @@ def obs_to_proprio(obs, mode: str = "ee_rotvec") -> np.ndarray:
     raise ValueError(f"Unsupported proprio mode: {mode}")
 
 
-def absolute_rpy7_from_obs(obs) -> np.ndarray:
+def absolute_rotvec7_from_obs(obs) -> np.ndarray:
     ee_pose = np.asarray(obs.gripper_pose, dtype=np.float32)
-    rpy = quat_to_rpy(ee_pose[3:7]).astype(np.float32)
-    return np.concatenate([ee_pose[:3], rpy, [gripper_open_value(obs)]], axis=0).astype(np.float32)
+    rotvec = quat_to_rotvec(ee_pose[3:7]).astype(np.float32)
+    return np.concatenate([ee_pose[:3], rotvec, [gripper_open_value(obs)]], axis=0).astype(np.float32)
 
 
-def absolute_rpy7_to_rlbench(action_7d) -> np.ndarray:
+def absolute_rotvec7_to_rlbench(action_7d) -> np.ndarray:
     action = np.asarray(action_7d, dtype=np.float64)
-    quat = rpy_to_quat(action[3:6])
+    quat = rotvec_to_quat(action[3:6])
     return np.concatenate([action[:3], quat, [float(action[6])]]).astype(np.float64)
 
 

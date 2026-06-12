@@ -9,7 +9,7 @@ from torch.utils.data import Dataset
 
 from .common import (
     VIEW_NAMES,
-    absolute_rpy7_from_obs,
+    absolute_rotvec7_from_obs,
     clean_waypoints,
     filter_manifest_rows,
     image_path_for_frame,
@@ -164,7 +164,7 @@ class RlbenchHeuristicWaypointDataset(Dataset):
                         [obs_to_proprio(observations[min(f, num_frames - 1)], self.proprio_mode) for f in obs_frames],
                         axis=0,
                     ).astype(np.float32)
-                    action = absolute_rpy7_from_obs(observations[target])
+                    action = absolute_rotvec7_from_obs(observations[target])
                     if validate_image_paths:
                         for frame_idx in obs_frames:
                             for view in self.view_names:

@@ -12,7 +12,7 @@
 - ConditionalUnet1D 风格 diffusion head
 - 稀疏动作目标：预测下一个 full-task heuristic waypoint
 
-动作格式是 `absolute_rpy7`：`x, y, z, roll, pitch, yaw, gripper_open`。训练时 `action_horizon=1`，online eval 时每次预测一个 waypoint 并执行一个动作。
+动作格式是 `absolute_rotvec7`：`x, y, z, rotvec_x, rotvec_y, rotvec_z, gripper_open`。训练时 `action_horizon=1`，online eval 时每次预测一个 waypoint，并在执行前转换成 RLBench 需要的 quaternion action。
 
 ## 数据格式
 
@@ -106,7 +106,7 @@ LOWDIM_ROOT_400=/path/to/lowdim_root_400 \
 bash scripts/smoke_dataset.sh
 ```
 
-这个命令只会读少量 `low_dim_obs.pkl` 和三视角 RGB，打印 sample shape、当前帧、目标 waypoint 和 `absolute_rpy7` 动作。它不会启动训练，也不会启动 RLBench/CoppeliaSim。
+这个命令只会读少量 `low_dim_obs.pkl` 和三视角 RGB，打印 sample shape、当前帧、目标 waypoint 和 `absolute_rotvec7` 动作。它不会启动训练，也不会启动 RLBench/CoppeliaSim。
 
 ## 训练
 
@@ -215,7 +215,7 @@ bash scripts/train_selected10_rgb_resnet18conv_dp_h1.sh
 
 ## Online Eval
 
-online eval 会 reset 到 manifest 中对应 demo 的 `low_dim_obs.pkl`，保留最近两个 live observations，预测一个 `absolute_rpy7` waypoint，转换成 RLBench quaternion action 后执行一个 planning/IK action。
+online eval 会 reset 到 manifest 中对应 demo 的 `low_dim_obs.pkl`，保留最近两个 live observations，预测一个 `absolute_rotvec7` waypoint，转换成 RLBench quaternion action 后执行一个 planning/IK action。
 
 主结果默认使用 `SAMPLE_STEPS=100` denoising steps。若评估太慢，可以额外报告 `SAMPLE_STEPS=16` 或 `32` 的加速版本，但不建议把它作为主表默认。
 
